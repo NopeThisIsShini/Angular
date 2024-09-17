@@ -13,6 +13,9 @@ export class RoomsComponent implements OnInit{
   selectedRoom!: RoomList
   // used to understand ngonchanges
   title: string='Room list';
+
+  // a property which is changed using viewchild and viewafterInit
+  view: string = 'this is before change view'
   onToggle(){
     this.title = 'Rooms list'
   }
