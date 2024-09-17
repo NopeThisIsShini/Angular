@@ -1,0 +1,6 @@
+<div *ngIf="selectedRoom">
+    {{selectedRoom | json}}
+</div>
+
+<app-rooms-list [rooms]="roomlist" 
+(selectedRoom)="selectRoom($event)"></app-rooms-list>
