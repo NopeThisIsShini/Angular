@@ -2,5 +2,10 @@
     {{selectedRoom | json}}
 </div>
 
-<app-rooms-list [rooms]="roomlist" 
+<app-rooms-list [rooms]="roomlist" [title]="title"
 (selectedRoom)="selectRoom($event)"></app-rooms-list>
+
+<button (click)="addRoom()">Add Room</button>
+
+<!-- used to understand ngonchanges, by click this button this will changes the value of title -->
+<button (click)="onToggle()">Toggle</button>

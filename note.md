@@ -1,0 +1,1 @@
+ngOnChanges works in that component which contains @Input() property..

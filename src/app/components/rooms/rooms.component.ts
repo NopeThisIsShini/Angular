@@ -11,6 +11,11 @@ import { RoomList } from './models/room';
 export class RoomsComponent implements OnInit{
   roomlist: RoomList[] = []
   selectedRoom!: RoomList
+  // used to understand ngonchanges
+  title: string='Room list';
+  onToggle(){
+    this.title = 'Rooms list'
+  }
   constructor(private roomServ: RoomService){
 
   }
@@ -21,4 +26,18 @@ export class RoomsComponent implements OnInit{
     console.log(room);
     this.selectedRoom = room
   }
+  // add room static data
+  addRoom(){
+    const room: RoomList = {
+      roomNumber: 7,
+      roomType: 'Delux',
+      price: 2000,
+      amenities: 'AC, WiFi, TV',
+      chekInTime: new Date('2022-11-02'),
+      checkOutTime: new Date('2022-11-03')
+    }
+    // this means everytime it's returns a new intance with old ones
+    this.roomlist = [...this.roomlist, room]
+  }
+  // this.roomlist.push(room);
 }
