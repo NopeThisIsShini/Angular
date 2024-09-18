@@ -5,8 +5,14 @@
     {{selectedRoom | json}}
 </div>
 
-<app-rooms-list [rooms]="roomlist" [title]="title"
+<!-- <app-rooms-list [rooms]="roomlist" [title]="title"
+(selectedRoom)="selectRoom($event)"></app-rooms-list> -->
+                             <!-- here i alice the rooms$ to rooms  -->
+<div *ngIf="rooms$ | async  as rooms">
+    <app-rooms-list [rooms]="rooms" [title]="title"
 (selectedRoom)="selectRoom($event)"></app-rooms-list>
+</div>
+
 
 <button (click)="addRoom()">Add Room</button>
 

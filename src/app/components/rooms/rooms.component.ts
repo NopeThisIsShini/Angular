@@ -14,6 +14,7 @@ export class RoomsComponent implements OnInit {
   selectedRoom!: RoomList
   // used to understand ngonchanges
   title: string = 'Room list';
+  rooms$ = this.roomServ.getRooms$;
   // observable practice 
   stream = new Observable(observer => {
     // internally obsservable user observer which observe
@@ -33,23 +34,24 @@ export class RoomsComponent implements OnInit {
     this.title = 'Rooms list'
   }
   constructor(private roomServ: RoomService) {
-    // here just to see usecase of shareReplay i write this
-    this.roomServ.getRooms$.subscribe({
-      next: (rooms) => {
-        console.log('Data:', rooms);
-        this.roomlist = rooms
-      },
+    // here just to see usecase of shareReplay  i write this unnessaryly to to check if this instance call two times
+    // this.roomServ.getRooms$.subscribe({
+    //   next: (rooms) => {
+    //     console.log('Data:', rooms);
+    //     this.roomlist = rooms
+    //   },
 
-    });
+    // });
   }
   ngOnInit(): void {
-    this.roomServ.getRooms$.subscribe({
-      next: (rooms) => {
-        console.log('Data:', rooms);
-        this.roomlist = rooms
-      },
+    // here the another call 
+    // this.roomServ.getRooms$.subscribe({
+    //   next: (rooms) => {
+    //     console.log('Data:', rooms);
+    //     this.roomlist = rooms
+    //   },
 
-    });
+    // });
     this.stream.subscribe({
       next: (data) => console.log(data),
       complete: () => console.log('completed'),

@@ -11,7 +11,8 @@ import { RoomList } from '../models/room';
 export class RoomsListComponent implements OnInit,OnChanges{
 
    //below line just do, make this rooms property as an valid html property of app-rooms-list
-   @Input() rooms: RoomList[]=[]
+                                // this null as it can also returns null 
+   @Input() rooms: RoomList[] | null =[]
    // title which is used to understand ngonchanges
    @Input() title: string='';
 
