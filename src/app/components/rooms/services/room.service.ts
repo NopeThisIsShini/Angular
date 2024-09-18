@@ -3,11 +3,19 @@ import { RoomList } from '../models/room';
 import { APP_SERVICE_CONFIG } from '../../../AppConfig/appconfig.service';
 import { AppConfig } from '../../../AppConfig/appconfig.interface';
 import { HttpClient } from '@angular/common/http';
+import { shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
+  // this is userful where we are calling same api multiple time it returns only 1 
+
+  // here this $ tells that it returns a stream of data and getRoom is a property of this class
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+    // rxjs operator ShareReplay 
+    shareReplay(1)
+  );
               // value injector 
   constructor(
     @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
@@ -18,6 +26,9 @@ export class RoomService {
    }
    getRooms(){
     return this.http.get<RoomList[]>('/api/rooms');
+   }
+   editRoom(room: RoomList) {
+     return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);
    }
   // local database
   
