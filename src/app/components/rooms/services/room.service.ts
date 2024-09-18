@@ -1,13 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { RoomList } from '../models/room';
+import { APP_SERVICE_CONFIG } from '../../../AppConfig/appconfig.service';
+import { AppConfig } from '../../../AppConfig/appconfig.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
-
-  constructor() { }
+              // value injector 
+  constructor(
+    @Inject(APP_SERVICE_CONFIG) private config: AppConfig) 
+  {
+    console.log(this.config.apiEndpoint);
+   }
   // local database
+  
   roomList : RoomList[] = [
     {
       roomNumber: 1,
