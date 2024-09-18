@@ -23,7 +23,25 @@ export class RoomsComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.roomlist=this.roomServ.getRooms();
+    this.roomServ.getRooms().subscribe({
+      next: (rooms) => {
+        console.log('Data:', rooms);
+        this.roomlist = rooms
+      },
+      error: (error) => {
+        console.error('Error fetching rooms:', error);
+        if (error.status === 200 && typeof error.error === 'string') {
+          // It looks like the API returned HTML instead of JSON
+          console.log('Non-JSON response:', error.error);
+        } else {
+          // Handle other errors
+        }
+      }
+    
+     
+    });
+    // for local db 
+    // this.roomlist=this.roomServ.getRooms();
   } 
   selectRoom(room: RoomList){
     console.log(room);
@@ -32,7 +50,7 @@ export class RoomsComponent implements OnInit{
   // add room static data
   addRoom(){
     const room: RoomList = {
-      roomNumber: 7,
+      roomNumber: '7',
       roomType: 'Delux',
       price: 2000,
       amenities: 'AC, WiFi, TV',
