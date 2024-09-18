@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RoomService } from './services/room.service';
 import { RoomList } from './models/room';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrl: './rooms.component.css'
 })
 
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, OnDestroy {
   roomlist: RoomList[] = []
   selectedRoom!: RoomList
   // used to understand ngonchanges
@@ -79,6 +79,9 @@ export class RoomsComponent implements OnInit {
   }
   // this.roomlist.push(room);
   // editroom
+
+  // subcription variable type of subcription rxjs 
+  subscription !: Subscription
   editRoom(){
     const room: RoomList = {
       roomNumber: '3',
@@ -88,8 +91,15 @@ export class RoomsComponent implements OnInit {
       chekInTime: new Date('2022-11-02'),
       checkOutTime: new Date('2022-11-03'),
     };
-    this.roomServ.editRoom(room).subscribe((data) =>{
+    // if we subscribe anything we need to unsuscribe that in the time of component destroy , for this here we storing the value in subcription
+    this.subscription=this.roomServ.editRoom(room).subscribe((data) =>{
       this.roomlist = data
     })
   }
+  // onDestroy we are removing all subscriptions if any
+  ngOnDestroy(): void {
+    if(this.subscription){
+      this.subscription.unsubscribe();
+  }
+}
 }
