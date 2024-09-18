@@ -1,5 +1,7 @@
 <!-- for dynamic value change -->
  {{view}}
+<!-- error msg display  -->
+<div style="padding: 20px;">{{getError$ | async}}</div>
 
 <div *ngIf="selectedRoom">
     {{selectedRoom | json}}

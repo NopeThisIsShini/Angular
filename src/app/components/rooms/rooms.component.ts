@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RoomService } from './services/room.service';
 import { RoomList } from './models/room';
-import { Observable, Subscription } from 'rxjs';
+import { catchError, Observable, of, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -14,14 +14,22 @@ export class RoomsComponent implements OnInit, OnDestroy {
   selectedRoom!: RoomList
   // used to understand ngonchanges
   title: string = 'Room list';
-  rooms$ = this.roomServ.getRooms$;
+
+  error$ = new Subject<string>();
+  // use this to display error in html
+  getError$ = this.error$.asObservable();
+  rooms$ = this.roomServ.getRooms$.pipe(
+    catchError((err) =>{
+      this.error$.next(err.message);
+      return of([]);
+    })
+  );
   // observable practice 
   stream = new Observable(observer => {
     // internally obsservable user observer which observe
     // the data if there new data available
 
     // rxjs works on push architecture, so it will push data in stream if any new arrived
-
     observer.next('user1');
     observer.next('user2');
     observer.complete();
@@ -35,13 +43,13 @@ export class RoomsComponent implements OnInit, OnDestroy {
   }
   constructor(private roomServ: RoomService) {
     // here just to see usecase of shareReplay  i write this unnessaryly to to check if this instance call two times
-    // this.roomServ.getRooms$.subscribe({
-    //   next: (rooms) => {
-    //     console.log('Data:', rooms);
-    //     this.roomlist = rooms
-    //   },
+    this.roomServ.getRooms$.subscribe({
+      next: (rooms) => {
+        console.log('Data:', rooms);
+        this.roomlist = rooms
+      },
 
-    // });
+    });
   }
   ngOnInit(): void {
     // here the another call 

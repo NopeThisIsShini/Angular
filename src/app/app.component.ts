@@ -22,6 +22,6 @@ export class AppComponent implements OnInit,AfterViewInit{
   @ViewChild('room', {read: ViewContainerRef}) vcr!: ViewContainerRef;
   ngAfterViewInit(): void {
     const roomRef = this.vcr.createComponent(RoomsComponent);
-    roomRef.instance.view = 'This is after view changed'
+    roomRef.instance.view = 'This is when i changing value through viewchild and dynamic loading'; 
   }
 }
