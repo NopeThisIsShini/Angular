@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { HoverDirective } from './directives/hover.directive';
+import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 
 
 
@@ -46,7 +47,8 @@ function initializeAppFactory(initService: InitService) {
     RoomsBookingComponent,
     RoomsAddComponent,
     LoginComponent,
-    HoverDirective
+    HoverDirective,
+    EmailvalidatorDirective
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 <form>
    
     <div class="card flex justify-content-center">
-        <input type="email"appHover pInputText [(ngModel)]="email"  name="email"  placeholder="Provide your email"/>
+        <input #emailControl="ngModel" type="email" appEmailvalidator appHover pInputText [(ngModel)]="email"  name="email"  placeholder="Provide your email"/>
+        <div>
+            {{emailControl.errors | json}}
+        </div>
     </div>
     <div class="card flex justify-content-center">
                                                             <!-- have to provide this name property otherwise binding will not happened  -->
