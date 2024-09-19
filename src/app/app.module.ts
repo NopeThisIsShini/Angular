@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { HoverDirective } from './directives/hover.directive';
 import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
+import { RoomsModule } from './components/rooms/rooms.module';
 
 
 
@@ -39,19 +40,18 @@ function initializeAppFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
+   
     HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
-    RoomsBookingComponent,
-    RoomsAddComponent,
+    
     LoginComponent,
     HoverDirective,
     EmailvalidatorDirective
   ],
   imports: [
     BrowserModule,
+    RoomsModule, //always give feature module before root-route module, otherwise gets an error
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
@@ -63,7 +63,8 @@ function initializeAppFactory(initService: InitService) {
     RouterLinkActive,
     FormsModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [ 
     MessageService,

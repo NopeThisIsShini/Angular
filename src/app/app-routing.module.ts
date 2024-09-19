@@ -6,18 +6,11 @@ import { RoomsBookingComponent } from './components/rooms/rooms-booking/rooms-bo
 
 const routes: Routes = [
   
-  {
-    path: '', redirectTo: '/rooms', pathMatch: 'full'
-  },
+  
   {
     path: 'employee' ,component: EmployeeComponent
   },
-  {
-    path: 'rooms', component: RoomsComponent
-  },
-  {
-    path: 'rooms/:id', component: RoomsBookingComponent
-  }
+ 
 
 ];
 
