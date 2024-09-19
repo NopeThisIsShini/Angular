@@ -1,0 +1,17 @@
+<form>
+   
+    <div class="card flex justify-content-center">
+        <input type="email"appHover pInputText [(ngModel)]="email"  name="email"  placeholder="Provide your email"/>
+    </div>
+    <div class="card flex justify-content-center">
+                                                            <!-- have to provide this name property otherwise binding will not happened  -->
+        <input type="password" appHover pInputText [(ngModel)]="password" name="password" placeholder="Enter your password"/>
+    </div>
+    <div class="card flex justify-content-center">
+        <p-button (onClick)="login()" label="Submit" />
+    </div>
+    
+</form>
+<div>
+    Email: {{email}} password: {{password}}
+</div>

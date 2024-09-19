@@ -23,7 +23,11 @@ import { MenubarModule } from 'primeng/menubar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RoomsBookingComponent } from './components/rooms/rooms-booking/rooms-booking.component';
 import { RoomsAddComponent } from './components/rooms/rooms-add/rooms-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { HoverDirective } from './directives/hover.directive';
+
 
 
 // APP_INITIALIZER 
@@ -40,7 +44,9 @@ function initializeAppFactory(initService: InitService) {
     ContainerComponent,
     EmployeeComponent,
     RoomsBookingComponent,
-    RoomsAddComponent
+    RoomsAddComponent,
+    LoginComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,9 @@ function initializeAppFactory(initService: InitService) {
     MenubarModule,
     RouterLink,
     RouterLinkActive,
-    FormsModule
+    FormsModule,
+    InputTextModule,
+    ReactiveFormsModule
   ],
   providers: [ 
     MessageService,
