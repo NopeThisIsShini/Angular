@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { requestInterceptor } from './interceptor/request.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: APP_SERVICE_CONFIG,
       useValue: APP_CONFIG,
-    }
+    },
+    provideHttpClient(
+      withInterceptors([requestInterceptor])
+    )
+    // importProvidersFrom(BrowserAnimationsModule),
   ],
   bootstrap: [AppComponent]
 })
