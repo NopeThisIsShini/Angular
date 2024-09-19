@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,16 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.service';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { requestInterceptor } from './interceptor/request.interceptor';
 import { InitService } from './components/rooms/services/init.service';
+// prime ng update
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenubarModule } from 'primeng/menubar';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RoomsBookingComponent } from './components/rooms/rooms-booking/rooms-booking.component';
+
 
 // APP_INITIALIZER 
 function initializeAppFactory(initService: InitService) {
@@ -26,15 +36,25 @@ function initializeAppFactory(initService: InitService) {
     RoomsListComponent,
     HeaderComponent,
     ContainerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    RoomsBookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
+    ButtonModule,
+    RippleModule,
+    MenubarModule,
+    RouterLink,
+    RouterLinkActive
   ],
   providers: [ 
+    MessageService,
+    // for browser animation 
+    importProvidersFrom(BrowserAnimationsModule),
     {
       provide: APP_SERVICE_CONFIG,
       useValue: APP_CONFIG,
@@ -48,6 +68,7 @@ function initializeAppFactory(initService: InitService) {
     provideHttpClient(
       withInterceptors([requestInterceptor])
     )
+    
     // importProvidersFrom(BrowserAnimationsModule),
   ],
   bootstrap: [AppComponent]

@@ -74,6 +74,7 @@ export class RoomsComponent implements OnInit, OnDestroy {
   }
   // add room static data
   addRoom() {
+    console.log('testing')
     const room: RoomList = {
       roomNumber: '7',
       roomType: 'Delux',

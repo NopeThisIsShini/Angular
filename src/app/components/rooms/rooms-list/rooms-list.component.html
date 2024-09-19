@@ -26,8 +26,14 @@
         <td>{{room.amenities | titlecase}}</td>
         <!-- pipe syntax | property want to apply  -->
         <td>{{room.chekInTime | date:'short'}}</td>
-        <td><button class="btn btn-primary"
+        <td>
+            <!-- for select room  -->
+            <button class="btn btn-primary"
              (click)="selectRoom(room)"
-             >Select</button></td>
+             >Select</button>
+             <!-- dynamic routing  -->
+             <button [routerLink]="['/rooms',room.roomNumber]">Book Room</button>
+            
+        </td>
     </tr>
 </table>

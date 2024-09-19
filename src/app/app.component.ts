@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { localStorageToken } from './localStorage.token';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,17 @@ import { localStorageToken } from './localStorage.token';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit,AfterViewInit{
+
+
   title = 'angular';
   constructor(
-    @Inject(localStorageToken) private localStorage: Storage
-  ){
-
-  }
+    @Inject(localStorageToken) private localStorage: Storage,
+    private messageService: MessageService
+  ){}
+  // for toast check 
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+}
   ngOnInit(): void {
     // this is how to set structured data in local storage
     this.localStorage.setItem('token', 'testjwttoken');

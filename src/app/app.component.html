@@ -1,19 +1,24 @@
 <!-- <app-rooms></app-rooms> -->
 
 <!-- // dynamiclly component loading and value change  -->
-<div style=" padding-top: 10px;">
+<!-- <div style=" padding-top: 10px;">
     <ng-template #room></ng-template>
- </div>
+ </div> -->
 
 
 <!-- no matter in which order i write component here it will render as it is defined in container main component  -->
-<app-container>
+<!-- <app-container>
     <app-employee></app-employee>
     <app-rooms></app-rooms>
     <div> 
         THis is coming from ng-content
         the rull is room employee data(that the employee component) will be shown
     </div>
-</app-container>
+</app-container> -->
 
+<!-- for toast  -->
+<!-- <p-toast />
+<p-button (onClick)="show()" label="Show" /> -->
+<!--primeng navbar  -->
+<app-header></app-header>
 <router-outlet />
