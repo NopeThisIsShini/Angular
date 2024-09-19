@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RoomsBookingComponent } from './components/rooms/rooms-booking/rooms-booking.component';
+import { RoomsAddComponent } from './components/rooms/rooms-add/rooms-add.component';
+import { FormsModule } from '@angular/forms';
 
 
 // APP_INITIALIZER 
@@ -37,7 +39,8 @@ function initializeAppFactory(initService: InitService) {
     HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
-    RoomsBookingComponent
+    RoomsBookingComponent,
+    RoomsAddComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ function initializeAppFactory(initService: InitService) {
     RippleModule,
     MenubarModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule
   ],
   providers: [ 
     MessageService,
