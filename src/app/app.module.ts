@@ -51,7 +51,8 @@ function initializeAppFactory(initService: InitService) {
   ],
   imports: [
     BrowserModule,
-    RoomsModule, //always give feature module before root-route module, otherwise gets an error
+    // if i doing lazy loading we don't need to import rooms module, it called when it triggered
+    // RoomsModule, //always give feature module before root-route module, otherwise gets an error
     AppRoutingModule,
     CommonModule,
     HttpClientModule,

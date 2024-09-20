@@ -5,7 +5,8 @@ import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 
 const routes: Routes = [
   {
-    path: 'rooms', component: RoomsComponent,
+    // we we are lazy-loading default path will be null 
+    path: '', component: RoomsComponent,
     children: [
       // always add dynamic routing before wild card , if any other routing move them before wild card and dynamic routing
       {
