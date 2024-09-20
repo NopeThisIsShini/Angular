@@ -5,11 +5,15 @@ import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 
 const routes: Routes = [
   {
-    path: 'rooms', component: RoomsComponent
+    path: 'rooms', component: RoomsComponent,
+    children: [
+      // always add dynamic routing before wild card , if any other routing move them before wild card and dynamic routing
+      {
+        path: ':id', component: RoomsBookingComponent
+      },
+    ]
   },
-  {
-    path: 'rooms/:id', component: RoomsBookingComponent
-  },
+  
   {
     path: '', redirectTo: '/rooms', pathMatch: 'full'
   },
