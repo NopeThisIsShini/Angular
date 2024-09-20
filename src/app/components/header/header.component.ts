@@ -23,6 +23,12 @@ export class HeaderComponent  implements OnInit{
                 routerLink: 'employee',
                 routerLinkActive: 'active'
             },
+            {
+                label: 'Booking',
+                icon: 'pi pi-shopping-cart',
+                routerLink: 'booking',
+                routerLinkActive: 'active'
+            }
             // {
             //     label: 'Projects',
             //     icon: 'pi pi-search',

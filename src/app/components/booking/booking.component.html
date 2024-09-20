@@ -1,1 +1,34 @@
-<p>booking works!</p>
+<form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
+    {{bookingForm.value | json}}
+    <div class="card flex justify-content-center">
+        <input type="text" pInputText formControlName="roomId" placeholder="roomid"/>
+    </div>
+    <div class="card flex justify-content-center">
+        <input type="text" pInputText formControlName="guestName" placeholder="name" />
+    </div>
+    <div class="card flex justify-content-center">
+        <input type="text" pInputText formControlName="guestEmail" placeholder="email" />
+    </div>
+    <div class="card flex justify-content-center">
+        <input type="text" pInputText formControlName="mobileNumber" placeholder="mobileNumber" />
+    </div>
+    <div class="card flex justify-content-center">
+        <input type="number" pInputText formControlName="bookingAmount" placeholder="bookingAmount" />
+    </div>
+    <div class="card flex justify-content-center">
+        <p-calendar formControlName="checkinDate"  placeholder="checkin"/>
+    </div>
+    <div class="card flex justify-content-center">
+        <p-calendar formControlName="CheckoutDate" placeholder="CheckoutDate"/>
+    </div>
+    <div class="card flex justify-content-center">
+        <p-calendar formControlName="bookingDate"  placeholder="booking"/>
+    </div>
+
+    <div>
+        <p-button label="Submit" type="Submit"/>
+    </div>
+  
+    
+
+</form>
