@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     InputTextModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    AccordionModule
 
   ]
 })

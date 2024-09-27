@@ -28,7 +28,7 @@ export class RoomService {
     return this.http.get<RoomList[]>('/api/rooms');
    }
    editRoom(room: RoomList) {
-     return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);
+     return this.http.put<RoomList[]>(`${this.config.apiEndpoint}/rooms/${room.roomNumber}`, room);
    }
   // local database
   

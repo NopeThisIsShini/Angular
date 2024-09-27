@@ -1,7 +1,7 @@
 <form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
     {{bookingForm.value | json}}
     <div class="card flex justify-content-center">
-        <input type="text" pInputText formControlName="roomId" placeholder="roomid"/>
+        <input type="text" pInputText formControlName="roomId" placeholder="roomid" />
     </div>
     <div class="card flex justify-content-center">
         <input type="text" pInputText formControlName="guestName" placeholder="name" />
@@ -16,19 +16,58 @@
         <input type="number" pInputText formControlName="bookingAmount" placeholder="bookingAmount" />
     </div>
     <div class="card flex justify-content-center">
-        <p-calendar formControlName="checkinDate"  placeholder="checkin"/>
+        <p-calendar formControlName="checkinDate" placeholder="checkin" />
     </div>
     <div class="card flex justify-content-center">
-        <p-calendar formControlName="CheckoutDate" placeholder="CheckoutDate"/>
+        <p-calendar formControlName="CheckoutDate" placeholder="CheckoutDate" />
     </div>
     <div class="card flex justify-content-center">
-        <p-calendar formControlName="bookingDate"  placeholder="booking"/>
+        <p-calendar formControlName="bookingDate" placeholder="booking" />
+    </div>
+    <!-- address portion  -->
+    <div formGroupName="address" class="card flex justify-content-center ">
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="Address">
+                <div class="card flex justify-content-center">
+                    <input type="text" pInputText formControlName="AddressLine" placeholder="AddressLine" />
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="text" pInputText formControlName="AddressLine2" placeholder="AddressLine2" />
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="text" pInputText formControlName="City" placeholder="City" />
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="text" pInputText formControlName="State" placeholder="State" />
+                </div>
+                <div class="card flex justify-content-center">
+                    <input type="text" pInputText formControlName="Country" placeholder="Country" />
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+    <!-- guest dynamic array  -->
+    <div><p-button label="Add Guest" (click)="addGuest()" type="button" /></div>
+    <!-- represent the guest array  -->
+    <div formArrayName="guests">
+        <div *ngFor="let guest of guests.controls; let i=index " [formGroupName]="i">
+            <p-button type="button" label="Delete" (click)="deleteGuest(i)" *ngIf="i>0" />
+            <div class="card flex justify-content-center">
+                <input type="text" pInputText formControlName="guestName" placeholder="guestName" />
+            </div>
+            <div class="card flex justify-content-center">
+                <input type="number" pInputText formControlName="age" placeholder="age" />
+            </div>
+            <div>
+                <input type="file" (change)="onFileSelected($event, i)" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-button label="Submit" type="Submit" />
     </div>
 
-    <div>
-        <p-button label="Submit" type="Submit"/>
-    </div>
-  
-    
+
+
 
 </form>
